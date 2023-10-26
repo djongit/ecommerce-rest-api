@@ -1,6 +1,6 @@
 
 const path = require('path');
-require('dotenv').config({path: path.join(__dirname, '.env')}); // explicitly attach .env fire. 
+require('dotenv').config({path: path.join(__dirname, '.env')}); // explicitly attach .env file. 
 
 module.exports = {
     PORT: process.env.PORT,

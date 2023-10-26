@@ -1,12 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express()
-const port = 3000
+const app = express();
+const db = require('./db/index');
+const { PORT } = require('./conf');
+const productRouter = require ('./routes/routesIndex');
 
-app.get('/', (request, response) => {
-  response.json({ info: 'Node.js, Express, and Postgres API' })
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
+const startServer = async () => {
+ productRouter(app);
+app.listen(PORT, () => {
+  console.log(`All yours at port ${PORT}`);
 })
+};
+
+startServer();
+
+
+
