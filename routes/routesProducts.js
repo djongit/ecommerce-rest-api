@@ -30,8 +30,9 @@ module.exports = (app) => {
     productRouter.get('/search/:term', async(req, res, next) => {
         try {
             const searchQuery = req.params.term; // search term passed as parameter, to change it as query uncomment lines below
-            // console.log(req.query);
+            
             // const searchQuery = req.query.q;
+            // console.log(searchQuery);
             const responce = await servicesProductsRequest.getProductSearch(searchQuery);
             res.status(200).send(responce);
         } catch(error) {

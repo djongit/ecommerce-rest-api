@@ -28,17 +28,20 @@ module.exports = class productQueries {
 
     async productBySearch(searchQuery) {
         try {
-            console.log(searchQuery);
-            const psqlCommand = 'SELECT * FROM products WHERE product_name ILIKE $1';
-            const searchTerm = [searchQuery];
+            
+            const psqlCommand = 'SELECT * FROM products WHERE product_name ILIKE $1';           
+            const searchTerm = [`%${searchQuery}%`];
             const result = await db.query(psqlCommand, searchTerm);
-            // console.log(result);
-            return result.row?.length? result.rows[0] : null;
+           
+            return result.rows?.length? result.rows[0] : 'empty'; // needs changing to null, for testing
+
         } catch(error) {
             throw error;
         }
 
     }
+
+    // to do   -  productByCategory()
 }
 
 
