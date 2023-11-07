@@ -1,8 +1,8 @@
 const express = require('express');
-const app = express();
+const app = express(); // needs relocating
 const productRouter = express.Router();
 
-const servicesProducts = require('../services/servicesProducts');
+const servicesProducts = require('../services/serviceProducts');
 const servicesProductsRequest = new servicesProducts();
 
 module.exports = (app) => {

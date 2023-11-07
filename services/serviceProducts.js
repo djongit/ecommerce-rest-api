@@ -1,12 +1,12 @@
-const queriesProduct = require('../queries/queriesProducts');
-const queriesProductRequest = new queriesProduct();
+const queriesProduct = require('../queries/queryProducts');
+const queryProductRequest = new queriesProduct();
 
 module.exports = class servicesProducts {
 
     async getAllProducts(quer) {
 
         try {
-        const allProducts = await queriesProductRequest.productAll(quer);
+        const allProducts = await queryProductRequest.productAll(quer);
 
         return allProducts;
     } catch(error) {
@@ -16,7 +16,7 @@ module.exports = class servicesProducts {
 
     async getProductById (productId) {
         try {
-            const product = await queriesProductRequest.productById(productId);
+            const product = await queryProductRequest.productById(productId);
             return product;
         } catch(error) {
             throw(error);
@@ -25,7 +25,7 @@ module.exports = class servicesProducts {
 
     async getProductSearch (term) {
         try {
-            const product = await queriesProductRequest.productBySearch(term);
+            const product = await queryProductRequest.productBySearch(term);
             return product;
         } catch(error) {
             throw(error);
