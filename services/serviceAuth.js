@@ -18,11 +18,7 @@ module.exports = class serviceAuth {
         } catch (error) {
             throw error;
         }
-
-        
-        
-        
-        
+                    
 
 
     }
