@@ -14,7 +14,7 @@ module.exports = class QueryUser {
            return result.rows?.length? result.row[0] : null;
 
         } catch(error) {
-            throw new Error('Unable to find email quiery' + error);
+            throw new Error('Unable to find email queryUser' + error);
         }
     }
     async createUser (data) {
@@ -26,7 +26,7 @@ module.exports = class QueryUser {
             const result = await db.query(psqlCommand, values);
             return result.rows?.length? result.row[0] : null;
         } catch (error) {
-            throw new Error('Unable to create query' + error);
+            throw new Error('Unable to create queryUser' + error);
         }
     }
 
@@ -39,7 +39,7 @@ module.exports = class QueryUser {
             const result = await db.query(psqlCommand);
             return result.rows?.length? result.row[0] : null;
         } catch (error) {
-            throw new Error('Unable to update user query' + error);
+            throw new Error('Unable to update user queryUser' + error);
         }
     }
 
@@ -50,7 +50,7 @@ module.exports = class QueryUser {
             const result = await db.query(psqlCommand, value);
             return result.rows?.length? result.rows[0] : null;
         } catch (error) {
-            throw new Error('Unable to get by Id query' + error);
+            throw new Error('Unable to get by Id queryUser' + error);
         }
     }
 }
