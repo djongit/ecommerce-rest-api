@@ -22,7 +22,7 @@ async createOrder() {
     try {
         const { item, ...order } = this;
         const psqlCommand = pgp.helpers.insert(order, null, 'order') + 'RETURNING *';
-        const result = db.query(psqlCommand);
+        const result = await db.query(psqlCommand);
         if(result.rows?.length) {
             new Object.format(this, result.rows[0]);
             return result.rows[0];
@@ -37,7 +37,7 @@ async updateOrder(data) {
     try {
         const condition = pgp.as.format('WHERE id = ${id} RETURNING *', {id: this.id});
         const psqlCommand = pgp.helpers.insert(data, null, 'order') + condition;
-        const result = db.query(psqlCommand);
+        const result = await db.query(psqlCommand);
         return result.rows?.length? result.rows[0] : null;
     } catch(error) {
         throw new Error('Unable to updateOrder queryOrder' + error);
@@ -63,4 +63,4 @@ async orderById (id) {
         return new Error('Unable orderById queryOrder' + error);
     }
 }
-}
+};
