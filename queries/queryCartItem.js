@@ -28,7 +28,7 @@ module.exports = class QueryCartItem {
         try {
             const value = [cartId];
             psqlCommand = `SELECT "cart_items"."qnty", 
-                                    "cart_items"."cart_item_id",
+                                    "cart_items"."cart_id",
                                     products. *
                                 FROM "cartItems"
                                 INNER JOIN products ON products.id = "cart_items"."product_id"
