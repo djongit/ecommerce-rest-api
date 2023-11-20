@@ -1,11 +1,11 @@
 const express = require('express');
 const userRouter = express.Router();
-
+const { ensureAuthenticated } = require('../modules/moduleAuthenticated');
 const ServiceUser = require ('../services/serviceUser');
 const ServiceUserRequest = new ServiceUser();
 
-module.exports = () => {
-    app.use('user', userRouter);
+module.exports = (app) => {
+    app.use('user', ensureAuthenticated, userRouter);
     userRouter.get('./:userId', async (req, res, next) => {
         if(req.isAuthenticated()) {
             try {

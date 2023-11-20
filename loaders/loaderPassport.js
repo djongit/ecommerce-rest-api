@@ -1,13 +1,14 @@
 const passport = require('passport');
-
 const LocalStrategy = require('passport-local').Strategy;
+
+
 
 const serviceAuth = require('../services/serviceAuth');
 const serviceAuthRequest = new serviceAuth();
 
-module.exports = (app) => {
+module.exports = async (app) => {
 
-    app.use(passport.initialize()); 
+    app.use(passport.initialize());
     app.use(passport.session()); // middleware for persistent logins
 
     // set id as cookie in user browser
@@ -21,11 +22,14 @@ module.exports = (app) => {
     passport.use(new LocalStrategy(
         async (email, password, done) =>{
             try{
-                const findUser = serviceAuthRequest.login({email, password});
+                const findUser = await serviceAuthRequest.login({email: email, password});
                 return done(null, findUser);
             } catch(error) {
                 return done(error);
             }
         }
     ))
+    return passport;
 }
+
+

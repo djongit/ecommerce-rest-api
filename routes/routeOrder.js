@@ -1,11 +1,12 @@
 const express = require('express');
 const orderRouter = express.Router();
+const { ensureAuthenticated } = require('../modules/moduleAuthenticated');
 const ServiceOrder = require('../services/serviceOrder');
 const ServiceOrderRequest = new ServiceOrder();
 
 
 module.exports = (app) => {
-    app.use('/order', orderRouter);
+    app.use('/order', ensureAuthenticated, orderRouter);
 
     orderRouter.get('/', async(req, res, next) => {
         try {

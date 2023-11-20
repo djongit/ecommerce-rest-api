@@ -17,7 +17,7 @@ module.exports = (app, passport) => {
     })
 
 
-    authRouter.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req, res, next) => {
+    authRouter.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), async (req, res, next) => {
         try {
             const {email, password} = req.body;
             const response = ServiceAuthRequest.login({email, password});
@@ -27,7 +27,15 @@ module.exports = (app, passport) => {
         }
     })
 
-    authRouter.get('/profile', isLoggedIn, (req, res, next) => {
+    // authRouter.get('/profile', isLoggedIn, (req, res, next) => {
         
+    // })
+    authRouter.get('/logout', async (req, res, next) => {
+        try {
+            req.logout();
+            res.redirect('/login');
+        } catch(error) {
+            next(error);
+        }
     })
 }

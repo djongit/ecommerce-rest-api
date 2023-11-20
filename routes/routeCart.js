@@ -1,11 +1,12 @@
-const express = requier('express');
+const express = require('express');
 const cartRouter = express.Router();
+const { ensureAuthenticated } = require('../modules/moduleAuthenticated');
 
 const ServiceCart = require('../services/serviceCart');
 const ServiceCartRequest = new ServiceCart();
 
 module.exports = (app) => {
-    app.use('cart', cartRouter);
+    app.use('/cart', ensureAuthenticated, cartRouter);
 
     cartRouter.post('/mine', async (req, res, next) =>{
         try {
