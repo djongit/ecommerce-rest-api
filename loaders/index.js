@@ -1,7 +1,7 @@
 const loaderSession = require('./loaderExpress');
 const loaderRoutes = require('../routes/routeIndex');
 const loaderPassport = require('./loaderPassport');
-
+const loaderSwagger = require('./loaderSwagger');
 
 
 module.exports = async (app) => {
@@ -21,7 +21,9 @@ module.exports = async (app) => {
     await loaderRoutes(app, passport);
     console.log('Routes loaded successfully.');
 
-
+    console.log('Loading Swagger...');
+    await loaderSwagger(app);
+    console.log('Swagger loaded successfully');
 
 //        --- handle error ---
     app.use((error, req, res, next) => {

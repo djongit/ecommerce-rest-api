@@ -6,8 +6,8 @@ const routeUser = require('./routeUser');
 
 module.exports = (app, passport) => {
     routeAuth(app, passport);
-    routeCart(app, passport);
-    routeOrder(app, passport);
+    routeCart(app);
+    routeOrder(app);
     routeProducts(app);
     routeUser(app);
 };

@@ -17,7 +17,7 @@ module.exports = async (app) => {
     });
     passport.deserializeUser((id, done) => {
         done(null, {id});
-    })
+    });
 
     passport.use(new LocalStrategy(
         async (email, password, done) =>{
@@ -30,6 +30,6 @@ module.exports = async (app) => {
         }
     ))
     return passport;
-}
+};
 
 
