@@ -11,6 +11,7 @@ module.exports = class servicesProducts {
         return allProducts;
     } catch(error) {
         throw(error);
+        
     }
     }
 
@@ -18,7 +19,7 @@ module.exports = class servicesProducts {
         try {
             const product = await queryProductRequest.productById(productId);
             return product;
-        } catch(error) {
+        } catch(error) {           
             throw(error);
         }
     }

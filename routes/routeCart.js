@@ -89,7 +89,7 @@ module.exports = (app) => {
     });
 /**
  * @swagger     
- * /cart/mine/items:
+ * /cart/mine/items/{cartItemId}:
  *   post:
  *     summary: Add an item to the authenticated user's cart
  *     tags: [Cart]

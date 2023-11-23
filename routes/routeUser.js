@@ -1,6 +1,5 @@
 const express = require('express');
 const userRouter = express.Router();
-
 const ServiceUser = require ('../services/serviceUser');
 const ServiceUserRequest = new ServiceUser();
 
@@ -45,8 +44,7 @@ module.exports = (app) => {
     
 
 /**
- * @swagger
- * path:
+ *   @swagger
  *   /user/{userId}:
  *     get:
  *       summary: Get user by ID
@@ -86,8 +84,7 @@ module.exports = (app) => {
         }
     })
 /**
- * @swagger
- * path:
+ *   @swagger
  *   /user/{userId}:
  *     put:
  *       summary: Update user by ID
